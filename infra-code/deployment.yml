@@ -1,0 +1,41 @@
+####### Draft #######
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nxz-node-app-deployment
+  namespace: nxz-c-node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nxz-node-build
+  template:
+    metadata:
+      labels:
+        app: nxz-node-build
+    spec:
+      containers:
+      - name: nxz-node-build
+        image: pib21/nxz-node-app:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 3000
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nxz-node-app-deployment-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: nxz-node-build
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

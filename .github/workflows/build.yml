@@ -1,0 +1,35 @@
+name: RUN NODE APP
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        working-directory: backend-apps
+        run: docker build -t pib21/nxz-node-app:v2 .
+
+      - name: Push into Docker Hub
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u pib21 --password-stdin
+          docker push pib21/nxz-node-app:v2  # แก้ v1 เป็น v2 ให้ตรงกับที่ build
+
+  deployment:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Init Terraform
+        working-directory: infra-code
+        run: terraform init
+
+      - name: Apply Terraform
+        working-directory: infra-code
+        run: terraform apply -auto-approve

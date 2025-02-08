@@ -1,0 +1,6 @@
+services:
+  nxz-app-container:
+    image: pib21/nxz-node-app:v1
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
