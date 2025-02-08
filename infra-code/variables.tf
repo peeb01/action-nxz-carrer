@@ -29,7 +29,7 @@ variable "image" {
 variable "replicas" {
   description = "replicas set"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "container_port" {
