@@ -30,6 +30,9 @@ jobs:
         working-directory: infra-code
         run: terraform init
 
+      - name: Terraform Import
+        uses: terraform import kubernetes_namespace.app_namespace nxz-c-node-app
+
       - name: Apply Terraform
-        working-directory: infra-code
+        working-directory: backend-apps
         run: terraform apply -auto-approve
