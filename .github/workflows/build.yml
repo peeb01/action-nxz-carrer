@@ -18,7 +18,7 @@ jobs:
       - name: Push into Docker Hub
         run: |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u pib21 --password-stdin
-          docker push pib21/nxz-node-app:v2  # แก้ v1 เป็น v2 ให้ตรงกับที่ build
+          docker push pib21/nxz-node-app:v2
 
   deployment:
     runs-on: self-hosted
