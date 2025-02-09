@@ -30,8 +30,8 @@ jobs:
         working-directory: infra-code
         run: terraform init
 
-      - name: Clean Name Space
-        run: kubectl delete namespace nxz-c-node-app --wait=true || echo "No Name Space, skiped..."
+      # - name: Clean Name Space
+      #   run: kubectl delete namespace nxz-c-node-app --wait=true || echo "No Name Space, skiped..."
 
       - name: Apply Terraform
         working-directory: infra-code
