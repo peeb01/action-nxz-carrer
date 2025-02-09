@@ -32,7 +32,7 @@ jobs:
 
       - name: Clean Name Space
         run: |
-              if kubectl get namespace nxz-c-node-app >/dev/null 2>&1; then
+              if (kubectl get namespace nxz-c-node-app >/dev/null 2>&1); then
                 kubectl delete namespace nxz-c-node-app
               else
                 echo "No Namespace nxz-c-node-app, skipping..."
