@@ -31,12 +31,8 @@ jobs:
         run: terraform init
 
       - name: Clean Name Space
-        run: |
-          if kubectl get namespace nxz-c-node-app >/dev/null 2>&1; then
-            kubectl delete namespace nxz-c-node-app
-          else
-            echo "No Namespace nxz-c-node-app, skipping..."
-          fi
+        run: kubectl delete namespace nxz-c-node-app --ignore-not-found=true
+
       - name: Apply Terraform
         working-directory: infra-code
         run: terraform apply -auto-approve
