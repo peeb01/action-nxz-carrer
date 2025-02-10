@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "backend-apps/**"
 env:
   IMAGE_TAG: "v2"
 
@@ -24,6 +26,7 @@ jobs:
 
   deployment:
     runs-on: self-hosted
+    needs: build-image
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
