@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  tag: "v2"
+  IMAGE_TAG: "v2"
 
 jobs:
   build-image:
