@@ -1,24 +1,12 @@
 # NXZ-DEVOPS-ASSIGNMENT
 
-## How to run backend-app
+1.  Dockerfile
+    - backend-apps/Dockerfile 
+2.  docker-compose
+    - backend-apps/docker-compose.yml 
+3.  GitHub pipeline / Diagram
+    - .github/workflows/build.yml 
+    - cicd-diagram
+4.  Infrastructure-as-code
+    - infra-code
 
-### pre-requisite
-
-1. Node.js v22.13.1
-2. NPM version v10.9.2
-3. Docker (Mac, Linux)
-
-### Local development
-
-1. Go to folder `backend-apps`
-2. Install the dependency `npm install`
-3. Run local `npm run dev`
-4. The application will run on the localhost port 3000
-
-### How to build
-
-1. Go to folder `backend-apps`
-2. Install the dependency `npm install`
-3. Build `npm run build`
-4. Run the application `npm start`
-5. The application will run on the localhost port 3000
