@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+env:
+  tag: "v2"
 
 jobs:
   build-image:
@@ -13,12 +15,12 @@ jobs:
 
       - name: Build Docker Image
         working-directory: backend-apps
-        run: docker build -t pib21/nxz-node-app:v2 .
+        run: docker build -t pib21/nxz-node-app:${{ env.IMAGE_TAG }} .
 
       - name: Push into Docker Hub
         run: |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u pib21 --password-stdin
-          docker push pib21/nxz-node-app:v2
+          docker push pib21/nxz-node-app:${{ env.IMAGE_TAG }}
 
   deployment:
     runs-on: self-hosted
@@ -35,4 +37,4 @@ jobs:
 
       - name: Apply Terraform
         working-directory: infra-code
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="image=pib21/nxz-node-app:${{ env.IMAGE_TAG }}"

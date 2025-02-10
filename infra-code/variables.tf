@@ -23,7 +23,7 @@ variable "service_name" {
 variable "image" {
   description = "Docker Image"
   type        = string
-  default     = "pib21/nxz-node-app:v2"
+  # default     = "pib21/nxz-node-app:v2"
 }
 
 variable "replicas" {
