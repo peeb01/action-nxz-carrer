@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "backend-apps/**"
+      - "cicd-diagram/**"
 env:
   IMAGE_TAG: "v4"
 
