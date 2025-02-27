@@ -43,3 +43,7 @@ variable "service_type" {
   type        = string
   default     = "LoadBalancer"
 }
+
+
+
+
